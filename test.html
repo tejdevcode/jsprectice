@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.add-applicant-container{
+			padding:10px;
+		}
+
+		.dependent-container{
+			padding:5px 0 ;
+
+		}
+	</style>
+</head>
+<body>
+	<div class="add-applicant-container">
+		<div class="form-row dependents">
+			<div>
+				<label class="text-left" contenteditable="true">Applicant 1: </label>
+			</div>
+			<div>
+				<input type="number" placeholder="applicant age">
+			</div>
+		</div>
+		<div class="form-row dependent-container">
+			<div>
+				<input type="number" placeholder="dependent age"> <button id="btn" name="btn" type="button" class="close ">x</button>
+			</div>
+		</div>
+		<button class="btn-dependent">Add dependent</button>
+	</div>
+
+	<button class="add-applicant">Add applicant</button>
+
+	<script>
+		let nextLabel = 2
+		let nextId = 1
+		document.addEventListener('click', function(e) {
+			if (e.target.classList.contains('add-applicant')) {
+				addApplicant(e)
+			} else if (e.target.classList.contains('btn-dependent')) {
+				addDependent(e) 
+			} else if (e.target.classList.contains('remove-applicant')) {
+				e.target.closest('.add-applicant-container').remove()
+			} else if (e.target.classList.contains('close')) {
+				e.target.closest('.dependent-container').remove()
+			}
+		})
+
+		function addApplicant(e) {
+			let applicant = document.querySelector('.add-applicant-container')
+			var clone = applicant.cloneNode(true);
+			clone.id = "add-dependent" + nextLabel;
+			clone.querySelectorAll('.dependent-container').forEach((el, i) => {
+				if (i !== 0) el.remove()
+			})
+			applicant.parentElement.insertBefore(clone, e.target);
+			var label = clone.querySelector("label");
+			label.innerHTML = '<button  class="close remove-applicant">x</button>' + "Applicant " + (nextLabel++);
+		}
+
+		function addDependent(e) {
+			let dependent = document.querySelector('.dependent-container')
+			var clone = dependent.cloneNode(true);
+			e.target.closest('.add-applicant-container').querySelector('.dependents').append(clone);
+		}
+	</script>
+</body>
+</html>

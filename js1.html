@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+
+	<style>
+		.df{
+			display: flex;
+		}
+
+		.fww{
+			flex-wrap: wrap;
+		}
+
+		.temp div label{
+			display: block;
+		}
+
+		.temp{
+			align-items: flex-end;
+			margin-left: -10px;
+		}
+
+		.temp div{
+			padding: 10px 10px 0;
+		}
+
+		.lipyear , .hourmin{
+			margin-top: 20px;
+		}
+
+		.m0{
+			margin: 0;
+		}
+		p{
+			margin-top: 5px;
+		}
+
+		.pognumcheck span{
+			width: 186px;
+			display: inline-block;
+		}
+
+
+		.wrap{
+			max-width: 500px;
+			padding: 0 30px;
+			margin: 0 auto;	
+		}
+
+		body{
+			background: #beffbe;
+		}
+
+		.marks label{
+			display: block;
+		}
+
+		.marks .df > div {
+			padding-right: 10px;
+		}
+
+		.addstudinputs , 
+		.removestudinputs{
+			margin-top: 20px;
+			cursor: pointer;
+			font-weight: bold;
+			border: 1px double #000;
+			background: #09a509;
+			text-align: center;
+			padding: 0px 5px !important;
+			color: #fff;
+			width: 82px;
+			margin-right: 10px;
+		}
+
+		.removestudinputs{
+			background: red;
+		}
+
+		.mt20{
+			margin-top: 20px;
+		}
+
+		.hide{
+			display: none;
+		}
+
+		.studinfo:first-child .removestudinputs{
+			display: none;
+		}
+
+	</style>
+	<div class="wrap">
+		<!-- 4th -->
+		<div class="temp df fww">
+			<div>
+				<p class="m0">4. Celsius to Fahrenheit</p>
+				<label for="Celsius"> Celsius</label>
+				<input type="text" class="cels" placeholder="Enter Celsius" name="Celsius">
+			</div>
+			<label for="">=</label>
+			<div>
+				<label for="Fahrenheit">Fahrenheit</label>
+				<input type="text" class="fer" placeholder="Enter Fahrenheit" name="Fahrenheit">
+			</div>
+		</div>
+
+		<!-- 5th -->
+		<div class="hourmin">
+			<p class="m0">5.Enter hours to convert in mimits</p>
+			<input type="text" placeholder="Enter hours" class="hourinput">
+			<p class="returnmin"></p>
+		</div>
+
+		<!-- 6th -->
+		<div class="lipyear">
+			<p class="m0">6.enter year to check if it is lipyear or not!</p>
+			<input type="text" class="lipyearbox" placeholder="check year">
+			<p class="yearinfo"></p>
+		</div>
+
+		<!-- 7th -->
+		<div class="numcheck">
+			<p class="m0">7.check number is greater or equal to 100 or less then 1000</p>
+			<input type="text" class="numcheckinput" placeholder="Enter number">
+			<p class="numcheckinfo"></p>
+		</div>
+
+		<!-- 8th -->
+		<div class="numchecklarge">
+			<p class="m0">8.check Larger number</p>
+			<input type="text" class="largnumone" placeholder="Enter number">
+			<input type="text" class="largnumtwo" placeholder="Enter number">
+			<p class="largnumcheck  "></p>
+		</div>
+
+		<!-- 10th -->
+		<div class="numcheckpositive">
+			<p class="m0">10.check number positive or nagative</p>
+			<input type="text" class="ponumone" placeholder="Enter number">
+			<input type="text" class="ponumtwo" placeholder="Enter number">
+			<p class="pognumcheck "><span class="pocheckone"></span> <span class="pochecktwo"></span></p>
+		</div>
+
+		<!-- 12th -->
+		<div class="marks ">
+			<p class="m0">12.check grade of students</p>
+			<div class="marksbox">
+				<div class="mt20 studinfo df">
+					<div class="studname">
+						<label for="">Student Name</label>
+						<input type="text" class="studnameinput">
+					</div>
+					<div class="studmark">
+						<label for="">Marks</label>
+						<input type="number" class="marksinput"  min="1" max="100">
+					</div>
+					<div class="studgrad">
+						<label for="">Range Grade</label>
+						<input type="text" class="gradinput">
+					</div>
+					<div class="addstudinputs">+</div>
+					<div class="removestudinputs">-</div>
+					
+				</div>
+			</div>
+			<div class="totals mt20">
+				<div class=" mt20 df">
+					<div class="totname">
+						<label for="">Total Name</label>
+						<input type="text" class="totnameinput" value="All">
+					</div>
+					<div class="studmark">
+						<label for="">Total Marks</label>
+						<input type="text" class="totmarksinput">
+					</div>
+					<div class="studgrad">
+						<label for="">Total Grade</label>
+						<input type="text" class="totgradinput">
+					</div>
+					
+				</div>
+				<div class=" mt20 df">
+					
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script>
+		let $$ = ($) => document.querySelector($);
+		let cl = (info) => console.log(info);
+		//1.
+		let firstname = 'Lata';
+		//console.log(firstname);
+		//2.
+		let alertbox = "hello world";
+		//alert(alertbox);
+		//3.
+		let flower = "rose";
+		let tree = "maple";
+		//document.write(tree);
+		//4.
+		let cels = $$('.cels');
+		let fer = $$('.fer');
+		let inputHandler = function(e) {
+			fer.value = (e.target.value * 1.8) + 32;
+		}
+		let inputHandlerfer = function(e) {			
+			cels.value =  (e.target.value -32) / 1.8;
+		}
+		
+		cels.addEventListener('input', inputHandler);
+		fer.addEventListener('input', inputHandlerfer);
+
+		//5. question is not understandable
+		let hourinput = $$('.hourinput');
+		let returnmin = $$('.returnmin');
+		let hrhandler = (e) => returnmin.innerText = `${e.target.value * 60} minits` ;
+		hourinput.addEventListener('input', hrhandler );
+		//6. 
+		let lyearcheck = $$('.lipyearbox');
+		let lyearinfo = $$('.yearinfo');
+		let yearHandler = function(e) {			
+			(Number.isInteger(e.target.value /4 )) ?
+			lyearinfo.innerText = `${e.target.value} Year is lipyear` :
+			lyearinfo.innerText =`${e.target.value} year is not lipyear `
+		}
+		lyearcheck.addEventListener('input', yearHandler);
+		//7.
+		let numcheckinput = $$('.numcheckinput');
+		let numcheckinfo = $$('.numcheckinfo');
+		let numHandler = function(e) {			
+			(e.target.value >= 100 && e.target.value < 1000) ?
+			numcheckinfo.innerText = `${e.target.value} is pass` :
+			numcheckinfo.innerText =`${e.target.value} try differnt number less then 1000 `
+		}
+		numcheckinput.addEventListener('input', numHandler);
+
+		//8.
+		let largnumone = $$('.largnumone');
+		let largnumtwo = $$('.largnumtwo');
+		let largnumcheck = $$('.largnumcheck');
+		let lgHandlerone = (e) => {
+			largnumcheck.innerText = `${e.target.value} is Large Number` ;
+			(largnumtwo.value >= largnumone.value) ?
+			largnumcheck.innerText = `${largnumtwo.value} is Large Number` :
+			largnumcheck.innerText = `${largnumone.value} is Large Number`;
+		};
+		let lgHandlertwo = (e) => {			
+			(largnumone.value <= largnumtwo.value) ?
+			largnumcheck.innerText = `${e.target.value} is Large Number` :
+			largnumcheck.innerText = `${largnumone.value} is Large Number`;
+		};
+		largnumone.addEventListener('input', lgHandlerone );
+		largnumtwo.addEventListener('input', lgHandlertwo);
+
+		//10.
+		let ponumone = $$('.ponumone');
+		let ponumtwo = $$('.ponumtwo');
+		let pocheckone = $$('.pocheckone');
+		let pochecktwo = $$('.pochecktwo');
+		let positiveHandlerone = (e) => {
+			(e.target.value > 0) ? 
+			pocheckone.innerText = `${e.target.value} value is positive` : 
+			pocheckone.innerText = `${e.target.value} value is negative` ;
+			(e.target.value == 0) ? pocheckone.innerText = ` ${e.target.value} value is nutural` : "";
+			
+		}
+		let positiveHandlertwo = (e) => {
+			(e.target.value > 0) ? 
+			pochecktwo.innerText = `${e.target.value} input value is positive`: 
+			pochecktwo.innerText = `${e.target.value} value is negative` ; 
+			(e.target.value == 0) ? pochecktwo.innerText = `${e.target.value} value is nutural`: "";
+		}
+		ponumone.addEventListener('input' , positiveHandlerone);
+		ponumtwo.addEventListener('input' , positiveHandlertwo);
+	</script>
+
+	<script>
+		/*add functionality*/
+		let studnameinput = $$('.studnameinput');
+		let marksinput = $$('.marksinput');
+		let gradinput = $$('.gradinput');
+		let appendinput = (e) =>{
+			let stdinputsclone = $$('.marksbox .df').cloneNode(true);
+			$$('.marksbox').append(stdinputsclone);
+
+		}
+		document.addEventListener('click', (e) => {			
+			if (e.target.classList.contains('addstudinputs')) {
+				appendinput()
+			} else if (e.target.classList.contains('btn-dependent')) {
+				addDependent(e) 
+			} else if (e.target.classList.contains('remove-applicant')) {
+				e.target.closest('.add-applicant-container').remove()
+			} else if (e.target.classList.contains('removestudinputs')) {
+				e.target.closest('.studinfo').remove()
+			}
+		});
+		/*average*/
+		let studentsmarks = {
+			David : 80,
+			Vinod : 77,
+			Divya : 88,
+			Ishita :95,
+			Thomas : 68
+		}
+		let marks = Object.values(studentsmarks);
+		let avarageadd = marks.reduce((add, value)=> add + value);
+		let avgmark = avarageadd / marks.length;
+
+		/*grades check*/
+		let gradeHandler = (e) =>{
+			let  marknum = e.target.value;
+			switch(true) {
+				case marknum < 60:
+				gradmark = 'F';
+				break;
+				case marknum < 70:
+				gradmark = 'D';
+				break;
+				case marknum < 80:
+				gradmark = 'C';
+				break;
+				case marknum < 90:
+				gradmark = 'B';
+				break;
+				case marknum < 100:
+				gradmark = 'A';
+				break;
+				default:
+				gradmark = "dont know";
+			}
+			e.target.closest('.studinfo').querySelector('.gradinput').value = gradmark;			
+			
+		}
+		
+		document.addEventListener('input', (e) => {
+			if (e.target.classList.contains('marksinput')) {
+				gradeHandler(e);
+			}
+		});
+		document.addEventListener('change', (e) => {
+		let avginput = [];
+		if (e.target.classList.contains('marksinput')) {
+				//$$('.totmarksinput').value = e.target.value;				
+				
+				
+				if($$('.marksinput').value > 0 ){						
+					avginput = avginput + Number.isInteger(e.target.value);
+				};
+				
+
+
+				
+			}
+
+				 avginput.push(document.querySelectorAll('.marksbox .studmark .marksinput').value);
+			for(let i = 0; i < document.querySelectorAll('.marksbox .studmark').length ; i++){
+			cl(avginput)
+			}
+		});
+
+
+
+	</script>
+</body>
+</html>
