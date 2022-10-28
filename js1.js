@@ -1,6 +1,6 @@
 
-		let $$ = ($) => document.querySelector($);
-		let cl = (info) => console.log(info);
+let $$ = ($) => document.querySelector($);
+let cl = (info) => console.log(info);
 		//1.
 		let firstname = 'Lata';
 		//console.log(firstname);
@@ -151,8 +151,8 @@
 			}
 		});
 		document.addEventListener('change', (e) => {
-		let avginput = [];
-		if (e.target.classList.contains('marksinput')) {
+			let avginput = [];
+			if (e.target.classList.contains('marksinput')) {
 				//$$('.totmarksinput').value = e.target.value;				
 				
 				
@@ -165,9 +165,9 @@
 				
 			}
 
-				 avginput.push(document.querySelectorAll('.marksbox .studmark .marksinput').value);
+			avginput.push(document.querySelectorAll('.marksbox .studmark .marksinput').value);
 			for(let i = 0; i < document.querySelectorAll('.marksbox .studmark').length ; i++){
-			cl(avginput)
+				cl(avginput)
 			}
 		});
 
