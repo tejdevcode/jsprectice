@@ -159,10 +159,6 @@ let cl = (info) => console.log(info);
 				if($$('.marksinput').value > 0 ){						
 					avginput = avginput + Number.isInteger(e.target.value);
 				};
-				
-
-
-				
 			}
 
 			avginput.push(document.querySelectorAll('.marksbox .studmark .marksinput').value);
