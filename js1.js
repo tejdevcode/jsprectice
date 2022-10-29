@@ -165,7 +165,7 @@ let cl = (info) => console.log(info);
 			for(let i = 0; i < document.querySelectorAll('.marksbox .studmark').length ; i++){
 				cl(avginput)
 			}
-		});
+		}); 
 
 
 
